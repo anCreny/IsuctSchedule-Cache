@@ -2,9 +2,9 @@ package handlers
 
 import (
 	"encoding/json"
+	"github.com/anCreny/IsuctSchedule-Packages/logger"
 	"github.com/gorilla/mux"
 	"main/internal/repo"
-	"main/logger"
 	"net/http"
 	"strconv"
 	"strings"

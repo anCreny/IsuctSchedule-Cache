@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"main/internal/repo"
-	"main/logger"
+	"github.com/anCreny/IsuctSchedule-Packages/logger"
 	"net/http"
 	"strconv"
 )

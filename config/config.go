@@ -2,13 +2,14 @@ package config
 
 import (
 	"fmt"
+	"github.com/anCreny/IsuctSchedule-Packages/structs"
 	"os"
 )
 
 var Cfg *Config
 
 type Config struct {
-	RxCfg  ReindexerConfig
+	RxCfg  structs.ReindexerConfig
 	Server Server
 }
 
@@ -16,36 +17,20 @@ var (
 	NoEnvVarsError = fmt.Errorf("no one environmental variables were found")
 )
 
-type ReindexerConfig struct {
-	Host       string
-	Port       string
-	Username   string
-	Password   string
-	Database   string
-	Namespaces Namespaces
-}
-
 type Server struct {
 	Host string
 	Port string
 }
 
-type Namespaces struct {
-	Teachers string
-	Groups   string
-	Names    string
-}
-
-// TODO wrap by logs
 func Init() error {
 	cfg := &Config{
-		RxCfg: ReindexerConfig{
+		RxCfg: structs.ReindexerConfig{
 			Host:     os.Getenv("RX_HOST"),
 			Port:     os.Getenv("RX_PORT"),
 			Username: os.Getenv("RX_USERNAME"),
 			Password: os.Getenv("RX_PASSWORD"),
 			Database: os.Getenv("RX_DATABASE"),
-			Namespaces: Namespaces{
+			Namespaces: structs.Namespaces{
 				Teachers: os.Getenv("NM_TEACHERS"),
 				Groups:   os.Getenv("NM_GROUPS"),
 				Names:    os.Getenv("NM_NAMES"),

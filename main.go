@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/anCreny/IsuctSchedule-Packages/logger"
 	"github.com/gorilla/mux"
 	"main/config"
 	"main/http/handlers"
 	"main/internal/repo"
-	"main/logger"
 	"net/http"
 )
 

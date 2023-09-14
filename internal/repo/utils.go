@@ -2,9 +2,9 @@ package repo
 
 import (
 	"fmt"
+	"github.com/anCreny/IsuctSchedule-Packages/structs"
 	"github.com/restream/reindexer/v3"
 	"main/config"
-	"main/internal/repo/structs"
 	"time"
 	_ "time/tzdata"
 )
@@ -51,8 +51,8 @@ func getDay(holder, namespace string, offset int) (day structs.Day, err error) {
 	return
 }
 
-func getWeekDate(offset int) structs.WeekDate {
-	weekDate := structs.WeekDate{}
+func getWeekDate(offset int) WeekDate {
+	weekDate := WeekDate{}
 
 	location, err := time.LoadLocation(Location)
 	if err != nil {

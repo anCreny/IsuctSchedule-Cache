@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"encoding/json"
+	"github.com/anCreny/IsuctSchedule-Packages/logger"
 	"main/internal/repo"
-	"main/logger"
 	"net/http"
 )
 
