@@ -30,6 +30,11 @@ func GetTeacherDay(teacherName string, offset int) (structs.Day, error) {
 func getDay(holder, namespace string, offset int) (day structs.Day, err error) {
 	weekDate := getWeekDate(offset)
 
+	if weekDate.Weekday == 0 {
+		day.Week = weekDate.Week
+		return
+	}
+
 	q := r.Rx.Query(namespace).
 		Where("holder", reindexer.EQ, holder)
 
