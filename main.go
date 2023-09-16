@@ -54,7 +54,7 @@ func main() {
 	logger.Log.Info().Msg("Cache server start listening on " + addr)
 
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:8000"},
+		AllowedOrigins:   []string{"http://localhost:5173"},
 		AllowCredentials: true,
 	})
 
