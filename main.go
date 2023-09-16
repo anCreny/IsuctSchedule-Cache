@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/anCreny/IsuctSchedule-Packages/logger"
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 	"main/config"
 	"main/http/handlers"
 	"main/internal/repo"
@@ -52,7 +53,14 @@ func main() {
 
 	logger.Log.Info().Msg("Cache server start listening on " + addr)
 
-	if err := http.ListenAndServe(addr, router); err != nil {
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:8000"},
+		AllowCredentials: true,
+	})
+
+	handler := c.Handler(router)
+
+	if err := http.ListenAndServe(addr, handler); err != nil {
 		logger.Log.Error().Err(err).Msg("Cache stopped with the error")
 		return
 	}
