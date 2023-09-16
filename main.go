@@ -41,8 +41,12 @@ func main() {
 	//get all teachers names
 	router.HandleFunc("/api/names", handlers.GetNames).Methods(http.MethodGet)
 
-	//check group existence
+	//old group check rout
 	router.HandleFunc("/api/check/{number}", handlers.CheckGroup).Methods(http.MethodGet)
+
+	//check group existence
+	router.HandleFunc("/api/check/group/{number}", handlers.CheckGroup).Methods(http.MethodGet)
+	router.HandleFunc("/api/check/teacher/{name}", handlers.CheckTeacher).Methods(http.MethodGet)
 
 	addr := fmt.Sprintf("%s:%s", config.Cfg.Server.Host, config.Cfg.Server.Port)
 

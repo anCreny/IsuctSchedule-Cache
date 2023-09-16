@@ -5,6 +5,7 @@ import (
 	"github.com/anCreny/IsuctSchedule-Packages/structs"
 	"github.com/restream/reindexer/v3"
 	"main/config"
+	"slices"
 	"time"
 	_ "time/tzdata"
 )
@@ -12,6 +13,11 @@ import (
 const (
 	Location = "Europe/Moscow"
 )
+
+func CheckTeacher(name string) bool {
+	names := GetNames()
+	return slices.Contains(names.Names, name)
+}
 
 func CheckGroup(groupNumber string) bool {
 	_, found := r.Rx.Query(config.Cfg.RxCfg.Namespaces.Groups).
