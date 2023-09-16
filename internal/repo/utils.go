@@ -6,6 +6,7 @@ import (
 	"github.com/restream/reindexer/v3"
 	"main/config"
 	"slices"
+	"strings"
 	"time"
 	_ "time/tzdata"
 )
@@ -16,7 +17,10 @@ const (
 
 func CheckTeacher(name string) bool {
 	names := GetNames()
-	return slices.Contains(names.Names, name)
+
+	compName := strings.Join(strings.Split(name, "-"), " ")
+
+	return slices.Contains(names.Names, compName)
 }
 
 func CheckGroup(groupNumber string) bool {
