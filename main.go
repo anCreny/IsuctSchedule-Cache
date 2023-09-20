@@ -36,6 +36,7 @@ func main() {
 	router.HandleFunc("/api/group/{number}", handlers.GetGroup).Methods(http.MethodGet)
 
 	//teachers
+	router.HandleFunc("/api/associatedWith/{name}", handlers.GetTeacherCommonNames).Methods(http.MethodGet)
 	router.HandleFunc("/api/teacher/{name}/day", handlers.GetTeacherDay).Methods(http.MethodGet)
 	router.HandleFunc("/api/teacher/{name}", handlers.GetTeacher).Methods(http.MethodGet)
 
@@ -60,7 +61,7 @@ func main() {
 
 	handler := c.Handler(router)
 
-	if err := http.ListenAndServe(addr, handler); err != nil {
+	if err := http.ListenAndServe(":9819", handler); err != nil {
 		logger.Log.Error().Err(err).Msg("Cache stopped with the error")
 		return
 	}

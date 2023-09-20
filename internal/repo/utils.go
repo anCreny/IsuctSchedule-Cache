@@ -99,6 +99,20 @@ func GetNames() structs.TeachersNames {
 	return *names
 }
 
+func GetCommonTeachers(name string) []string {
+	namesArr := GetNames()
+	var commonNames []string
+	for _, teacherName := range namesArr.Names {
+		if len(commonNames) == 5 {
+			break
+		}
+		if strings.HasPrefix(strings.ToLower(teacherName), name) {
+			commonNames = append(commonNames, teacherName)
+		}
+	}
+	return commonNames
+}
+
 func getTimetable(holder, namespace string) (structs.Timetable, bool) {
 	item, found := r.Rx.Query(namespace).
 		Where("Holder", reindexer.EQ, holder).Get()
